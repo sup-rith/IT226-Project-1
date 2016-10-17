@@ -11,8 +11,10 @@ public class Student {
 	private ArrayList<Project> project;
 	private ArrayList<Double> exam;
 	
+	
+	
 	private double total;
-	private int finalExam;
+	private double finalExam;
 	private char letterGrade;
 	
 	
