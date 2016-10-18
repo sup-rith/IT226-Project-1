@@ -72,6 +72,7 @@ public class Menu
 		
 		// Tell Driver class to add filename to repository
 		// Then print number of students in file. And number of students where already in file.
+		fileIn.readFile(filename);
 		return filename;
 		
 	}//end addData()

@@ -28,7 +28,7 @@ public class FileInput {
 			
 		
 		try{
-			
+			System.out.println("Number of students currently in directory: " +numOfStudents);
 			reader = new Scanner(new File(fileName));
 			
 			int count = 0;
@@ -132,8 +132,8 @@ public class FileInput {
 				//System.out.println(students.size());
 					
 			}
-			System.out.println("numOfStudents: " + numOfStudents);
-			System.out.println("studentNum: " + studentNum);
+			System.out.println("Successfully added file to repository");
+			System.out.println("Number of students read: " + numOfStudents);
 			
 			reader.close();
 		}
@@ -159,7 +159,6 @@ public class FileInput {
 	{
 		String[] searchParam = criteria.split(",");
 		String[] gradeResults = new String[4];
-		
 		
 		return gradeResults;
 	}
