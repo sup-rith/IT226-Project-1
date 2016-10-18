@@ -56,14 +56,11 @@ public class FileInput {
 			
 			String studentLine = reader.nextLine();
 			String[] data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+			
 			boolean extraCycle = true;
 			
-			while (reader.hasNextLine() || extraCycle){
-				
-				if (!reader.hasNextLine() && (headerToken[count].contains("grade") || headerToken[count].contains("Grade")))
-				{
-					extraCycle = false;
-				}
+			while (1 == 1){
+
 				
 				
 				if (headerToken[count].contains("Student Name")){
@@ -114,17 +111,19 @@ public class FileInput {
 					students.add(student);
 					count = -1;
 					
-					if(reader.hasNext())
-					{
-						studentLine = reader.nextLine();
-						data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-						studentNum++;
+					studentNum++;
+					
+					if (numOfStudents == studentNum){
+						break;
 					}
 
+
+					studentLine = reader.nextLine();
+					data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+					
+					
+
 				}
-
-				
-
 			
 				
 				count++;
@@ -132,6 +131,8 @@ public class FileInput {
 				System.out.println(students.size());
 					
 			}
+			System.out.println("numOfStudents: " + numOfStudents);
+			System.out.println("studentNum: " + studentNum);
 			
 			reader.close();
 		}
