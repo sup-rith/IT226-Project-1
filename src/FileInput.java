@@ -59,12 +59,6 @@ public class FileInput {
 			
 			while (reader.hasNextLine()){
 				
-				if (!reader.hasNext()){
-					studentLine = reader.nextLine();
-					data = studentLine.split(",");
-					count = 0;
-				}
-				
 				
 				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
@@ -105,17 +99,19 @@ public class FileInput {
 				}
 				if (headerToken[count].contains("grade") || headerToken[count].contains("Grade")){
 					letterGrade = (data[count]);
-				}
-				
-
-				
-				if (!reader.hasNext()){
+					
 					Student student = new Student(firstName, lastName, id, assignments, projects, exams,
 							total, finalExam, letterGrade);
 					
 					
 					students.add(student);
+					
+					studentLine = reader.nextLine();
+					data = studentLine.split(",");
 				}
+				
+
+			
 				
 				count++;
 				studentNum++;
