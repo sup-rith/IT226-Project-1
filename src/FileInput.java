@@ -47,7 +47,7 @@ public class FileInput {
 			int studentNum = 0;
 			
 			String headerLine = reader.nextLine();
-			String[] headerToken = headerLine.split(",");
+			String[] headerToken = headerLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			
 			ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 			ArrayList<Project> projects = new ArrayList<Project>();
@@ -55,31 +55,38 @@ public class FileInput {
 			ArrayList<Student> students = new ArrayList<Student>();
 			
 			String studentLine = reader.nextLine();
-			String[] data = studentLine.split(",");
+			String[] data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+			boolean extraCycle = true;
 			
-			while (reader.hasNextLine()){
+			while (reader.hasNextLine() || extraCycle){
+				
+				if (!reader.hasNextLine() && (headerToken[count].contains("grade") || headerToken[count].contains("Grade")))
+				{
+					extraCycle = false;
+				}
 				
 				
 				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
 				}
-				if (headerToken[count].contains("FIRST NAME")){
+				else if (headerToken[count].contains("FIRST NAME")){
 					firstName = (data[count]);
 				}
-				if (headerToken[count].contains("LAST NAME")){
+				else if (headerToken[count].contains("LAST NAME")){
 					lastName = (data[count]);
 				}
-				if (headerToken[count].contains("Id") || headerToken[count].contains("ID")){
+				else if (headerToken[count].contains("Id") || headerToken[count].contains("ID")){
 					id = (data[count]);
 				}
-				if (headerToken[count].contains("Assignment")){
+				else if (headerToken[count].contains("Assignment")){
 					
 					Assignment assignment = new Assignment(headerToken[count], data[count], data[count +1]);
 					
 					assignments.add(assignment);
 					count ++;
+					
 				}
-				if (headerToken[count].contains("project") || headerToken[count].contains("Project") ||headerToken[count].contains("ray")
+				else if (headerToken[count].contains("project") || headerToken[count].contains("Project") ||headerToken[count].contains("ray")
 						|| headerToken[count].contains("Sprint") || headerToken[count].contains("Paper")){
 					
 					Project project = new Project(headerToken[count], data[count], data[count +1]);
@@ -87,14 +94,14 @@ public class FileInput {
 					projects.add(project);
 					count ++;
 				}
-				if (headerToken[count].contains("Exam")){
+				else if (headerToken[count].contains("Exam")){
 					
 					exams.add(data[count]);
 				}
-				if (headerToken[count].contains("Final")){
+				else if (headerToken[count].contains("Final")){
 					finalExam = (data[count]);
 				}
-				if (headerToken[count].contains("Total")){
+				else if (headerToken[count].contains("Total")){
 					total = (data[count]);
 				}
 				if (headerToken[count].contains("grade") || headerToken[count].contains("Grade")){
@@ -105,16 +112,24 @@ public class FileInput {
 					
 					
 					students.add(student);
+					count = -1;
 					
-					studentLine = reader.nextLine();
-					data = studentLine.split(",");
+					if(reader.hasNext())
+					{
+						studentLine = reader.nextLine();
+						data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
+						studentNum++;
+					}
+
 				}
+
 				
 
 			
 				
 				count++;
-				studentNum++;
+				
+				System.out.println(students.size());
 					
 			}
 			
