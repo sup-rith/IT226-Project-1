@@ -14,10 +14,14 @@ public class Driver {
 		
 		fileIn = new FileInput();
 		
-		fileIn.readFile("380-fall-2002.csv");	
+		//fileIn.readFile("380-fall-2002.csv");	
 		
+		Menu menu = new Menu();
+		//menu.printMenu();
 		
+		String file = menu.addData();
 		
+		fileIn.readFile(file);
 		
 	}
 }

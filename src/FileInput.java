@@ -57,14 +57,15 @@ public class FileInput {
 			String studentLine = reader.nextLine();
 			String[] data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			
-			boolean extraCycle = true;
-			
 			while (1 == 1){
 
 				
 				
 				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
+					String[] name = fullName.split(","); //Last minute add
+					firstName = name[1];
+					lastName = name[0];
 				}
 				else if (headerToken[count].contains("FIRST NAME")){
 					firstName = (data[count]);
@@ -128,7 +129,7 @@ public class FileInput {
 				
 				count++;
 				
-				System.out.println(students.size());
+				//System.out.println(students.size());
 					
 			}
 			System.out.println("numOfStudents: " + numOfStudents);

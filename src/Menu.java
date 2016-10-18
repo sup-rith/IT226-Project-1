@@ -4,10 +4,6 @@ public class Menu
 {//start Menu
 	public Scanner console = new Scanner(System.in);
 	
-	public Menu()
-	{
-		printMenu();
-	}
 	
 	public void printMenu()
 	{//start printMenu()
@@ -20,7 +16,7 @@ public class Menu
 		System.out.println("--------------------");
 		String userAnswer = console.nextLine();
 		
-		userAnswer.toUpperCase();
+		userAnswer = userAnswer.toUpperCase();
 		
 		switch (userAnswer)
 		{//start switch:case
@@ -40,14 +36,15 @@ public class Menu
 		
 	}//end printMenu()
 	
-	public void addData()
+	public String addData()
 	{//start addData()
 		boolean valid = false;
+		String filename = "";
 		
 		while(!valid)
 		{
 			System.out.print("Enter file name: ");
-			String filename = console.nextLine();
+			filename = console.nextLine();
 			if(filename.compareTo("437-fall-2002.csv") == 0 || filename.compareTo("437-fall-2003.csv") == 0 || filename.compareTo("380-fall-2002.csv") == 0)
 				valid = true;
 			else
@@ -59,21 +56,24 @@ public class Menu
 		{
 			System.out.print("Enter Semester: ");
 			String semester = console.nextLine();
-			semester.toUpperCase();
+			semester = semester.toUpperCase();
 			
-			if(semester.compareTo("FALL")==0)
+			if(semester.equals("FALL"))
 				valid = true;
 			else
+			{
 				System.out.println(semester +" semester cannot be added to repository. Enter a different value.");
+				
+			}
 		}
 		
 		valid = false;
 		while(!valid)
 		{
 			System.out.print("Enter Course Number: ");
-			int course = console.nextInt();
+			String course = console.nextLine();
 			
-			if(course == 437 || course == 437 || course == 380)
+			if(course.compareTo("437") == 0 || course.compareTo("380") == 0)
 				valid = true;
 			else
 				System.out.println("Course number " +course +" cannot be added to repository. Enter a different course number.");
@@ -81,6 +81,7 @@ public class Menu
 		
 		// Tell Driver class to add filename to repository
 		// Then print number of students in file. And number of students where already in file.
+		return filename;
 		
 	}//end addData()
 	
@@ -98,7 +99,9 @@ public class Menu
 	
 	public void gradeSearch()
 	{//start gradeSearch()
-		String course, year, semester;
+		String course = "";
+		String year = "";
+		String semester = "";
 		
 		boolean valid = false;
 		while(!valid)
@@ -110,7 +113,7 @@ public class Menu
 				valid = true;
 			else
 			{
-				course.toUpperCase();
+				course = course.toUpperCase();
 				if(course.compareTo("NONE") == 0)
 					valid = true;
 				else
@@ -123,7 +126,7 @@ public class Menu
 		{
 			System.out.print("Enter Semester (to skip enter none): ");
 			semester = console.nextLine();
-			semester.toUpperCase();
+			semester = semester.toUpperCase();
 			
 			if(semester.compareTo("FALL")==0 || semester.compareTo("NONE") == 0)
 				valid = true;
@@ -140,7 +143,7 @@ public class Menu
 				valid = true;
 			else
 			{
-				year.toUpperCase();
+				year = year.toUpperCase();
 				if(year.compareTo("NONE") == 0)
 					valid = true;
 				else
