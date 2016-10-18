@@ -150,5 +150,19 @@ public class FileInput {
         }
 	}
 	
+	public void getStudent(String id, String outFile)
+	{
+		
+	}
+	
+	public String[] gradeSearch(String criteria)
+	{
+		String[] searchParam = criteria.split(',');
+		String[] gradeResults = new String[4];
+		
+		
+		return gradeResults;
+	}
+	
 }
 	

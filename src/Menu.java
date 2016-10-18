@@ -3,7 +3,7 @@ import java.util.Scanner;
 public class Menu 
 {//start Menu
 	public Scanner console = new Scanner(System.in);
-	
+	FileInput fileIn = new FileInput();
 	
 	public void printMenu()
 	{//start printMenu()
@@ -22,7 +22,7 @@ public class Menu
 		{//start switch:case
 		case "A":	addData();
 					return;
-		case "S":	saveData();
+		case "S":	studentData();
 					return;
 		case "G":	gradeSearch();
 					return;
@@ -38,45 +38,36 @@ public class Menu
 	
 	public String addData()
 	{//start addData()
-		boolean valid = false;
 		String filename = "";
+		String file = "";
+		String courseNumber = "";
+		String semester = "";
+		String year = "";
+		int cutOff = 0;
+		boolean isTrue = true;
 		
-		while(!valid)
-		{
+		while(isTrue){
 			System.out.print("Enter file name: ");
-			filename = console.nextLine();
-			if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv"))
-				valid = true;
-			else
-				System.out.println("You entered an invalid file name. Please try again.");
-		}
-		
-		valid = false;
-		while(!valid)
-		{
-			System.out.print("Enter Semester: ");
-			String semester = console.nextLine();
-			semester = semester.toUpperCase();
+			filename = console.next();
+			console.nextLine();
 			
-			if(semester.equals("FALL"))
-				valid = true;
-			else
-			{
-				System.out.println(semester +" semester cannot be added to repository. Enter a different value.");
+			if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv")){
+					
+				for(int i =0; i < filename.length(); i++){
+						cutOff = filename.indexOf('.');
+					}
 				
+				file = filename.substring(0, cutOff);
+				System.out.println(file);
+				String[] fileNameString = filename.split("-");
+				courseNumber = fileNameString[0];
+				semester = fileNameString[1];
+				year = fileNameString[2];
+				isTrue = false;
 			}
-		}
-		
-		valid = false;
-		while(!valid)
-		{
-			System.out.print("Enter Course Number: ");
-			String course = console.nextLine();
-			
-			if(course.equals("437") || course.equals("380"))
-				valid = true;
-			else
-				System.out.println("Course number " +course +" cannot be added to repository. Enter a different course number.");
+			else{
+				System.out.println("You entered an invalid file name. Please try again.");
+			}
 		}
 		
 		// Tell Driver class to add filename to repository
@@ -85,17 +76,19 @@ public class Menu
 		
 	}//end addData()
 	
-	public void saveData()
-	{//start saveData()
+	
+	public void studentData()
+	{//start studentData()
 		System.out.print("Enter Student ID: ");
 		String studentID = console.nextLine();
 		System.out.print("\nEnter name of file to export: ");
 		String exportFileName = console.nextLine();
 		
+		fileIn.getStudent(studentID,exportFileName);
 		// Tell Driver class to find all data for studentID 
 		// and save it in a file named exportFileName
 		
-	}//end saveData
+	}//end studentData()
 	
 	public void gradeSearch()
 	{//start gradeSearch()
@@ -117,7 +110,7 @@ public class Menu
 				if(course.equals("NONE"))
 					valid = true;
 				else
-					System.out.println("Course number " +course +" was not found within repository. Enter a course number.");
+					System.out.println("Course number " +course +" was not found within repository. Please try again.");
 			}
 		}
 
@@ -131,7 +124,7 @@ public class Menu
 			if(semester.equals("FALL")|| semester.equals("NONE"))
 				valid = true;
 			else
-				System.out.println(semester +" semester was not found within repository. Enter a different value.");
+				System.out.println(semester +" semester was not found within repository. Please try again.");
 		}
 
 		valid = false;
@@ -147,14 +140,21 @@ public class Menu
 				if(year.equals("NONE"))
 					valid = true;
 				else
-					System.out.println("School year was not found within repository. Enter a different value.");
+					System.out.println("School year was not found within repository. Please try again.");
 			}
 		}
 		
 		if(year.equals("NONE") && semester.equals("NONE") && course.equals("NONE"))
 			printMenu();
-		else{
-			//Tell Driver to create an array amount of each grade letter for the parameters sent.
+		else
+		{
+			String searchCriteria = course +"," +semester +"," +year;
+			String[] grades = new String[4]; 
+			grades = fileIn.gradeSearch(searchCriteria);
+			//Tell Driver to create an array of each grade letter for the parameters sent.
+			//The string sent to FileInput's gradeSearch method is split by commas. 
+			//Three fields: course# then semester then school year
+			//Value of those fields could be NONE. One field will always have a value.
 		}
 
 	}//end gradeSearch()
