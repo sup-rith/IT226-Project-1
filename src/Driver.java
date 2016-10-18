@@ -13,11 +13,9 @@ public class Driver {
 		FileInput fileIn;
 		
 		fileIn = new FileInput();
-		
-		//fileIn.readFile("380-fall-2002.csv");	
+			
 		
 		Menu menu = new Menu();
-		//menu.printMenu();
 		
 		String file = menu.addData();
 		

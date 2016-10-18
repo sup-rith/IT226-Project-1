@@ -27,7 +27,7 @@ public class Menu
 		case "G":	gradeSearch();
 					return;
 		case "E":	System.out.print("Have a nice day!");
-					System.exit(0);
+					System.exit(1);
 					return;
 		default:
 					System.out.println("Invalid entry. Please try again.");
@@ -45,7 +45,7 @@ public class Menu
 		{
 			System.out.print("Enter file name: ");
 			filename = console.nextLine();
-			if(filename.compareTo("437-fall-2002.csv") == 0 || filename.compareTo("437-fall-2003.csv") == 0 || filename.compareTo("380-fall-2002.csv") == 0)
+			if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv"))
 				valid = true;
 			else
 				System.out.println("You entered an invalid file name. Please try again.");
@@ -73,7 +73,7 @@ public class Menu
 			System.out.print("Enter Course Number: ");
 			String course = console.nextLine();
 			
-			if(course.compareTo("437") == 0 || course.compareTo("380") == 0)
+			if(course.equals("437") || course.equals("380"))
 				valid = true;
 			else
 				System.out.println("Course number " +course +" cannot be added to repository. Enter a different course number.");
@@ -109,12 +109,12 @@ public class Menu
 			System.out.print("Enter the course number to search (to skip enter none): ");
 			course = console.nextLine();
 			
-			if(course.compareTo("437") == 0 || course.compareTo("437") == 0 || course.compareTo("380") == 0)
+			if(course.equals("437") || course.equals("380"))
 				valid = true;
 			else
 			{
 				course = course.toUpperCase();
-				if(course.compareTo("NONE") == 0)
+				if(course.equals("NONE"))
 					valid = true;
 				else
 					System.out.println("Course number " +course +" was not found within repository. Enter a course number.");
@@ -128,7 +128,7 @@ public class Menu
 			semester = console.nextLine();
 			semester = semester.toUpperCase();
 			
-			if(semester.compareTo("FALL")==0 || semester.compareTo("NONE") == 0)
+			if(semester.equals("FALL")|| semester.equals("NONE"))
 				valid = true;
 			else
 				System.out.println(semester +" semester was not found within repository. Enter a different value.");
@@ -139,19 +139,19 @@ public class Menu
 		{
 			System.out.print("Enter School Year (to skip enter none): ");
 			year = console.nextLine();
-			if(year.compareTo("2002") == 0 || year.compareTo("2003") == 0)
+			if(year.equals("2002") || year.equals("2003"))
 				valid = true;
 			else
 			{
 				year = year.toUpperCase();
-				if(year.compareTo("NONE") == 0)
+				if(year.equals("NONE"))
 					valid = true;
 				else
 					System.out.println("School year was not found within repository. Enter a different value.");
 			}
 		}
 		
-		if(year.compareTo("NONE") == 0 && semester.compareTo("NONE") == 0 && course.compareTo("NONE") == 0)
+		if(year.equals("NONE") && semester.equals("NONE") && course.equals("NONE"))
 			printMenu();
 		else{
 			//Tell Driver to create an array amount of each grade letter for the parameters sent.
