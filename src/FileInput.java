@@ -157,7 +157,7 @@ public class FileInput {
 	
 	public String[] gradeSearch(String criteria)
 	{
-		String[] searchParam = criteria.split(',');
+		String[] searchParam = criteria.split(",");
 		String[] gradeResults = new String[4];
 		
 		

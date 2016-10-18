@@ -21,14 +21,14 @@ public class Menu
 		switch (userAnswer)
 		{//start switch:case
 		case "A":	addData();
-					return;
+					break;
 		case "S":	studentData();
-					return;
+					break;
 		case "G":	gradeSearch();
-					return;
+					break;
 		case "E":	System.out.print("Have a nice day!");
 					System.exit(1);
-					return;
+					break;
 		default:
 					System.out.println("Invalid entry. Please try again.");
 					printMenu();
