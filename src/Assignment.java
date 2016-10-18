@@ -2,10 +2,10 @@
 public class Assignment {
 
 	private String name;
-	private double score;
+	private String score;
 	private String comment;
 	
-	public Assignment(String name, double score, String comment){
+	public Assignment(String name, String score, String comment){
 		this.name = name;
 		this.score = score;
 		this.comment = comment;
@@ -19,11 +19,11 @@ public class Assignment {
 		this.name = name;
 	}
 
-	public double getScore() {
+	public String getScore() {
 		return score;
 	}
 
-	public void setScore(double score) {
+	public void setScore(String score) {
 		this.score = score;
 	}
 
