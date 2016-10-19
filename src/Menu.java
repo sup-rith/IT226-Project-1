@@ -36,7 +36,7 @@ public class Menu
 		
 	}//end printMenu()
 	
-	public String addData() //TODO: give user option to search by year, course and semster
+	public void addData() //TODO: give user option to search by year, course and semster
 	{//start addData()
 		String filename = "";
 		String file = "";
@@ -70,10 +70,9 @@ public class Menu
 			}
 		}
 		
-		// Tell Driver class to add filename to repository
-		// Then print number of students in file. And number of students where already in file.
 		fileIn.readFile(filename);
-		return filename;
+		System.out.println("\n\n\n__________\n\n");
+		printMenu();
 		
 	}//end addData()
 	
@@ -86,7 +85,7 @@ public class Menu
 		String exportFileName = console.nextLine();
 		
 		fileIn.getStudent(studentID,exportFileName);
-		// Tell Driver class to find all data for studentID 
+		// Tell FileInput.java class to find all data for studentID 
 		// and save it in a file named exportFileName
 		
 	}//end studentData()
