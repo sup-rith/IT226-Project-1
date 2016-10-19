@@ -36,7 +36,7 @@ public class Menu
 		
 	}//end printMenu()
 	
-	public String addData()
+	public String addData() //TODO: give user option to search by year, course and semster
 	{//start addData()
 		String filename = "";
 		String file = "";
