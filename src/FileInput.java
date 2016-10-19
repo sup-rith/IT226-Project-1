@@ -47,9 +47,7 @@ public class FileInput {
 			int studentNum = 0;
 			
 			String headerLine = reader.nextLine();
-			headerLine.toUpperCase();
 			String[] headerToken = headerLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-
 			
 			ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 			ArrayList<Project> projects = new ArrayList<Project>();
@@ -59,14 +57,13 @@ public class FileInput {
 			String studentLine = reader.nextLine();
 			String[] data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			
-			
 			while (true){
 
 				
 				
-				if (headerToken[count].contains("STUDENT NAME")){
+				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
-					String[] name = fullName.split(",");
+					String[] name = fullName.split(","); //Last minute add
 					firstName = name[1];
 					lastName = name[0];
 				}
@@ -76,10 +73,10 @@ public class FileInput {
 				else if (headerToken[count].contains("LAST NAME")){
 					lastName = (data[count]);
 				}
-				else if (headerToken[count].contains("ID")){
+				else if (headerToken[count].contains("Id") || headerToken[count].contains("ID")){
 					id = (data[count]);
 				}
-				else if (headerToken[count].contains("ASSIGNMENT")){
+				else if (headerToken[count].contains("Assignment")){
 					
 					Assignment assignment = new Assignment(headerToken[count], data[count], data[count +1]);
 					
@@ -87,25 +84,25 @@ public class FileInput {
 					count ++;
 					
 				}
-				else if (headerToken[count].contains("PROJECT") ||headerToken[count].contains("RAY")
-						|| headerToken[count].contains("SPRINT") || headerToken[count].contains("PAPER")){
+				else if (headerToken[count].contains("project") || headerToken[count].contains("Project") ||headerToken[count].contains("ray")
+						|| headerToken[count].contains("Sprint") || headerToken[count].contains("Paper")){
 					
 					Project project = new Project(headerToken[count], data[count], data[count +1]);
 					
 					projects.add(project);
 					count ++;
 				}
-				else if (headerToken[count].contains("EXAM")){
+				else if (headerToken[count].contains("Exam")){
 					
 					exams.add(data[count]);
 				}
-				else if (headerToken[count].contains("FINAL")){
+				else if (headerToken[count].contains("Final")){
 					finalExam = (data[count]);
 				}
-				else if (headerToken[count].contains("TOTAL")){
+				else if (headerToken[count].contains("Total")){
 					total = (data[count]);
 				}
-				if (headerToken[count].contains("GRADE")){
+				if (headerToken[count].contains("grade") || headerToken[count].contains("Grade")){
 					letterGrade = (data[count]);
 					
 					Student student = new Student(firstName, lastName, id, assignments, projects, exams,
