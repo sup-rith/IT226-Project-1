@@ -150,9 +150,30 @@ public class FileInput {
         }
 	}
 	
-	public void getStudent(String id, String outFile)
+	public void addStudent(String id, String outFile)
 	{
+		FileWriter writer = null;
+		try{
+			writer = new FileWriter(outFile);
+		}
+		catch(IOException ex) {
+                System.out.println(
+                    "Error writing to file: " 
+                    + outFile);                  
+                System.exit(1);
+            }
 		
+		for (int i = 0; i < students.size(); i++){
+			if (id == students.get(i).getId()){
+				Student student = students.get(i);
+				break;
+			}
+		}
+		
+		String studentInfo;
+		studentInfo = 
+		
+		//write to file outFile
 	}
 	
 	public String[] gradeSearch(String criteria)

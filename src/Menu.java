@@ -84,7 +84,7 @@ public class Menu
 		System.out.print("\nEnter name of file to export: ");
 		String exportFileName = console.nextLine();
 		
-		fileIn.getStudent(studentID,exportFileName);
+		fileIn.addStudent(studentID,exportFileName);
 		// Tell FileInput.java class to find all data for studentID 
 		// and save it in a file named exportFileName
 		
