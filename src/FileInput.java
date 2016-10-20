@@ -28,7 +28,7 @@ public class FileInput {
 			
 		
 		try{
-			System.out.println("Number of students currently in directory: " +numOfStudents);
+			System.out.println("Number of students currently in directory: " +students.size());
 			reader = new Scanner(new File(fileName));
 			
 			int count = 0;
