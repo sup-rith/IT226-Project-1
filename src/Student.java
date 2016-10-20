@@ -132,12 +132,12 @@ public class Student {
 		
 		for(int i = 0; i < assignments.size(); i++)
 		{
-			header += assignments.get(i).getName() +"," +assignments.get(i).getName() +"Comment,";
+			header += assignments.get(i).getName() +"," +assignments.get(i).getName() +" Comment,";
 		}
 		
 		for(int i = 0; i < projects.size(); i++)
 		{
-			header += projects.get(i).getName() +"," +projects.get(i).getName() +"Comment,";
+			header += projects.get(i).getName() +"," +projects.get(i).getName() +" Comment,";
 		}
 		
 		for(int i = 0; i < exams.size(); i++)

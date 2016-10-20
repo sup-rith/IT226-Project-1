@@ -24,7 +24,7 @@ public class FileInput {
 	int count = 0;
 	
 	
-	public void readFile(String fileName){
+	public void readFile(String fileName, String cutOff){
 			
 		
 		try{
@@ -78,7 +78,7 @@ public class FileInput {
 				}
 				else if (headerToken[count].contains("Assignment")){
 					
-					Assignment assignment = new Assignment(headerToken[count], data[count], data[count +1]);
+					Assignment assignment = new Assignment(cutOff +"-" +headerToken[count], data[count], data[count +1]);
 					
 					assignments.add(assignment);
 					count ++;

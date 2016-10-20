@@ -70,7 +70,7 @@ public class Menu
 			}
 		}
 		
-		fileIn.readFile(filename);
+		fileIn.readFile(filename,file);
 		System.out.println("\n\n\n__________\n\n");
 		printMenu();
 		
