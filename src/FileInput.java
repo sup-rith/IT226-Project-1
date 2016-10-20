@@ -152,16 +152,6 @@ public class FileInput {
 	
 	public void addStudent(String id, String outFile)
 	{
-		FileWriter writer = null;
-		try{
-			writer = new FileWriter(outFile);
-		}
-		catch(IOException ex) {
-                System.out.println(
-                    "Error writing to file: " 
-                    + outFile);                  
-                System.exit(1);
-            }
 		
 		Student student = new Student();
 		
@@ -170,9 +160,25 @@ public class FileInput {
 				student = students.get(i);
 				break;
 			}
-		}
-		
+
+		FileWriter writer = null;
 		String studentInfo = student.toString();
+		
+		
+		
+		try{
+			writer = new FileWriter(outFile);
+			writer.write(studentInfo);
+			writer.close();
+			
+		}
+		catch(IOException ex) {
+                System.out.println(
+                    "Error writing to file: " 
+                    + outFile);                  
+                System.exit(1);
+            }
+		}
 		
 		//write to file outFile
 	}
