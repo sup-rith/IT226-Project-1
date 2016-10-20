@@ -202,6 +202,24 @@ public class FileInput {
 			
 			String[] fileGradeCameFrom = gradeWithFile[1].split("-");
 			
+			if (userParam[0].equals("NONE") && userParam[2].equals("NONE") && userParam[1].equals("FALL")){
+				if (gradeWithFile[0].equals("A")){
+					numOfAs++;
+				}
+				if (gradeWithFile[0].equals("B")){
+					numOfBs++;
+				}
+				if (gradeWithFile[0].equals("C")){
+					numOfCs++;
+				}
+				if (gradeWithFile[0].equals("D")){
+					numOfDs++;
+				}
+				if (gradeWithFile[0].equals("F")){
+					numOfFs++;
+				}
+			}
+			
 			if(userParam[0] != "NONE")
 			{
 				if(userParam[0].equals(fileGradeCameFrom[0])){
