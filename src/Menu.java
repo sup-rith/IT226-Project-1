@@ -4,6 +4,8 @@ public class Menu
 {//start Menu
 	public Scanner console = new Scanner(System.in);
 	FileInput fileIn = new FileInput();
+	int numOfFiles = 0;
+	String[] nameOfFiles = new String[2];
 	
 	public void printMenu()
 	{//start printMenu()
@@ -92,6 +94,8 @@ public class Menu
 		}
 		
 		fileIn.readFile(filename,file);
+		nameOfFiles[numOfFiles] = filename;
+		numOfFiles++;
 		System.out.println("\n\n\n__________\n\n");
 		printMenu();
 		
