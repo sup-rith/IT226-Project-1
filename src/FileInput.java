@@ -19,8 +19,6 @@ public class FileInput {
 	FileReader fileReader = null;
 	String line = null;
 	Scanner reader = null;
-
-	int numOfStudents = 0;
 	int count = 0;
 	
 	
@@ -32,7 +30,8 @@ public class FileInput {
 			reader = new Scanner(new File(fileName));
 			
 			int count = 0;
-						
+			int numOfStudents = 0;
+			
 			while (reader.hasNextLine()){
 				reader.nextLine();
 				numOfStudents++;
