@@ -160,7 +160,9 @@ public class FileInput {
 				student = students.get(i);
 				break;
 			}
-
+		}
+		
+		
 		FileWriter writer = null;
 		String studentInfo = student.toString();
 		
@@ -178,7 +180,8 @@ public class FileInput {
                     + outFile);                  
                 System.exit(1);
             }
-		}
+		
+		
 		
 		//write to file outFile
 	}
