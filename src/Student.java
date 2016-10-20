@@ -126,4 +126,53 @@ public class Student {
 		System.out.println();
 	} 
 	
+	public String toString()
+	{
+		String header = new String("Student Id,Full Name,");
+		
+		for(int i = 0; i < assignments.size(); i++)
+		{
+			header += assignments.get(i).getName() +"," +assignments.get(i).getName() +"Comment,";
+		}
+		
+		for(int i = 0; i < projects.size(); i++)
+		{
+			header += projects.get(i).getName() +"," +projects.get(i).getName() +"Comment,";
+		}
+		
+		for(int i = 0; i < exams.size(); i++)
+		{
+			if(i+1 >= exams.size())
+				header += "Exam " +exams.size();
+			else
+				header += "Exam " +i+1 +",";
+		}
+		
+		header += "Final Exam, Total, Letter Grade\n";
+		
+		//------------------
+		
+		String body = id +"," +fullName +",";
+		
+		for(int i = 0; i < assignments.size(); i++)
+		{
+			body += assignments.get(i).getScore() +"," +assignments.get(i).getComment() +",";
+		}
+		
+		for(int i = 0; i < projects.size(); i++)
+		{
+			header += projects.get(i).getScore() +"," +projects.get(i).getComment() +",";
+		}
+		
+		for(int i = 0; i < exams.size(); i++)
+		{
+			body += exams.get(i) +",";
+		}
+		
+		body += finalExam +"," +total +"," +letterGrade +"\n";
+		
+		String out = header + body;
+		
+		return out;
+	}
 }

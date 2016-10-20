@@ -163,15 +163,16 @@ public class FileInput {
                 System.exit(1);
             }
 		
+		Student student = new Student();
+		
 		for (int i = 0; i < students.size(); i++){
 			if (id == students.get(i).getId()){
-				Student student = students.get(i);
+				student = students.get(i);
 				break;
 			}
 		}
 		
-		String studentInfo;
-		studentInfo = 
+		String studentInfo = student.toString();
 		
 		//write to file outFile
 	}
