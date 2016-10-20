@@ -177,13 +177,13 @@ public class Menu
 			int[] grades = new int[5]; 
 			grades = fileIn.gradeSearch(searchCriteria);
 			
-			for (int i = 0; i < grades.length; i++){
-				System.out.println(grades[i]);
+			System.out.println("A  B  C  D  F");
+			for (int i = 0; i < grades.length; i++)
+			{
+				System.out.print(grades[i] +"  ");
 			}
-			//Tell Driver to create an array of each grade letter for the parameters sent.
-			//The string sent to FileInput's gradeSearch method is split by commas. 
-			//Three fields: course# then semester then school year
-			//Value of those fields could be NONE. One field will always have a value.
+			System.out.println("\n\n");
+			printMenu();
 		}
 
 	}//end gradeSearch()
