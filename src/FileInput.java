@@ -141,10 +141,7 @@ public class FileInput {
 	}
 	
 	public void addStudent(String id, String outFile) 
-	{
-		
-		//int studentNumber = 0;
-		
+	{		
 		int[] studentsFound = {-1,-1,-1};
 		
 		for (int i = 0; i < students.size(); i++){ 
@@ -175,7 +172,25 @@ public class FileInput {
 			studentInfo1 = students.get(studentsFound[2]).toString();
 			studentInfo0 += studentInfo2;
 		}
+			
+		try{
+			writer = new FileWriter(outFile);
+			writer.write(studentInfo0);
+			writer.close();
+			
+		}
+		catch(IOException ex) {
+                System.out.println(
+                    "Error writing to file: " 
+                    + outFile);                  
+                System.exit(1);
+            }
+		
+		
+		
+		//write to file outFile
 	}
+	
 	public int[] gradeSearch(String criteria)
 	{
 		int numOfAs = 0;
