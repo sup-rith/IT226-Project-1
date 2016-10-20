@@ -22,7 +22,7 @@ public class FileInput {
 	int count = 0;
 	
 	
-	public void readFile(String fileName, String cutOff){
+	public boolean readFile(String fileName, String cutOff){
 			
 		
 		try{
@@ -126,6 +126,8 @@ public class FileInput {
 			System.out.println("Number of students read: " + numOfStudents);
 			
 			reader.close();
+			
+			return true;
 		}
 		catch(FileNotFoundException ex) {
             System.out.println(
@@ -138,6 +140,7 @@ public class FileInput {
                 + fileName);                  
             System.exit(1);
         }
+		return false;
 	}
 	
 	public void addStudent(String id, String outFile) 
@@ -155,40 +158,40 @@ public class FileInput {
 			}
 		}
 		
-		
-		FileWriter writer = null;
-		
-		String studentInfo0 = students.get(studentsFound[0]).toString();
-		String studentInfo1 = "";
-		String studentInfo2 = "";
-		
-		if((studentsFound[1] != -1))
-		{
-			studentInfo1 = students.get(studentsFound[1]).toString();
-			studentInfo0 += studentInfo1;
-		}
-		if((studentsFound[2] != -1))
-		{
-			studentInfo1 = students.get(studentsFound[2]).toString();
-			studentInfo0 += studentInfo2;
-		}
+		if(studentsFound[0] == -1 && studentsFound[1] == -1 && studentsFound[2] == -1)
+			System.out.println("Student was not found in the repository.");
+		else
+		{	
+			FileWriter writer = null;
 			
-		try{
-			writer = new FileWriter(outFile);
-			writer.write(studentInfo0);
-			writer.close();
+			String studentInfo0 = students.get(studentsFound[0]).toString();
+			String studentInfo1 = "";
+			String studentInfo2 = "";
 			
+			if((studentsFound[1] != -1))
+			{
+				studentInfo1 = students.get(studentsFound[1]).toString();
+				studentInfo0 += studentInfo1;
+			}
+			if((studentsFound[2] != -1))
+			{
+				studentInfo1 = students.get(studentsFound[2]).toString();
+				studentInfo0 += studentInfo2;
+			}
+				
+			try{
+				writer = new FileWriter(outFile);
+				writer.write(studentInfo0);
+				writer.close();
+				
+			}
+			catch(IOException ex) {
+	                System.out.println(
+	                    "Error writing to file: " 
+	                    + outFile);                  
+	                System.exit(1);
+	            }
 		}
-		catch(IOException ex) {
-                System.out.println(
-                    "Error writing to file: " 
-                    + outFile);                  
-                System.exit(1);
-            }
-		
-		
-		
-		//write to file outFile
 	}
 	
 	public int[] gradeSearch(String criteria)

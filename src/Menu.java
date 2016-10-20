@@ -6,6 +6,7 @@ public class Menu
 	FileInput fileIn = new FileInput();
 	int numOfFiles = 0;
 	String[] nameOfFiles = new String[3];
+	boolean added = false;
 	
 	public void printMenu()
 	{//start printMenu()
@@ -102,7 +103,9 @@ public class Menu
 			}
 		}
 		
-		fileIn.readFile(filename,file);
+		boolean result = fileIn.readFile(filename,file);
+		if(result)
+			added = true;
 		nameOfFiles[numOfFiles] = filename;
 		numOfFiles++;
 		System.out.println("\n\n\n__________\n\n");
@@ -113,86 +116,105 @@ public class Menu
 	
 	public void studentData()
 	{//start studentData()
-		System.out.print("Enter Student ID: ");
-		String studentID = console.nextLine();
-		System.out.print("\nEnter name of file to export: ");
-		String exportFileName = console.nextLine();
-		
-		fileIn.addStudent(studentID,exportFileName);
-		// Tell FileInput.java class to find all data for studentID 
-		// and save it in a file named exportFileName
+		if(!added)
+		{
+			System.out.println("You have not added anything to the repository yet.");
+			printMenu();
+		}
+		else
+		{
+			System.out.print("Enter Student ID: ");
+			String studentID = console.nextLine();
+			boolean valid = false;
+			System.out.print("\nEnter name of file to export: ");
+			String exportFileName = console.nextLine();
+			
+			fileIn.addStudent(studentID,exportFileName);
+			
+			System.out.println("______________");
+			printMenu();
+		}
 		
 	}//end studentData()
 	
 	public void gradeSearch()
 	{//start gradeSearch()
-		String course = "";
-		String year = "";
-		String semester = "";
-		
-		boolean valid = false;
-		while(!valid)
+		if(!added)
 		{
-			System.out.print("Enter the course number to search (to skip enter none): ");
-			course = console.nextLine();
-			
-			if(course.equals("437") || course.equals("380"))
-				valid = true;
-			else
-			{
-				course = course.toUpperCase();
-				if(course.equals("NONE"))
-					valid = true;
-				else
-					System.out.println("Course number " +course +" was not found within repository. Please try again.");
-			}
-		}
-
-		valid = false;
-		while(!valid)
-		{
-			System.out.print("Enter Semester (to skip enter none): ");
-			semester = console.nextLine();
-			semester = semester.toUpperCase();
-			
-			if(semester.equals("FALL")|| semester.equals("NONE"))
-				valid = true;
-			else
-				System.out.println(semester +" semester was not found within repository. Please try again.");
-		}
-
-		valid = false;
-		while(!valid)
-		{
-			System.out.print("Enter School Year (to skip enter none): ");
-			year = console.nextLine();
-			if(year.equals("2002") || year.equals("2003"))
-				valid = true;
-			else
-			{
-				year = year.toUpperCase();
-				if(year.equals("NONE"))
-					valid = true;
-				else
-					System.out.println("School year was not found within repository. Please try again.");
-			}
-		}
-		
-		if(year.equals("NONE") && semester.equals("NONE") && course.equals("NONE"))
+			System.out.println("You have not added anything to the repository yet.");
 			printMenu();
+		}
 		else
 		{
-			String searchCriteria = course +"," +semester +"," +year;
-			int[] grades = new int[5]; 
-			grades = fileIn.gradeSearch(searchCriteria);
+		
+			String course = "";
+			String year = "";
+			String semester = "";
 			
-			System.out.println("A  B  C  D  F");
-			for (int i = 0; i < grades.length; i++)
+			boolean valid = false;
+			while(!valid)
 			{
-				System.out.print(grades[i] +"  ");
+				System.out.print("Enter the course number to search (to skip enter none): ");
+				course = console.nextLine();
+				
+				if(course.equals("437") || course.equals("380"))
+					valid = true;
+				else
+				{
+					course = course.toUpperCase();
+					if(course.equals("NONE"))
+						valid = true;
+					else
+						System.out.println("Course number " +course +" was not found within repository. Please try again.");
+				}
 			}
-			System.out.println("\n\n");
-			printMenu();
+	
+			valid = false;
+			while(!valid)
+			{
+				System.out.print("Enter Semester (to skip enter none): ");
+				semester = console.nextLine();
+				semester = semester.toUpperCase();
+				
+				if(semester.equals("FALL")|| semester.equals("NONE"))
+					valid = true;
+				else
+					System.out.println(semester +" semester was not found within repository. Please try again.");
+			}
+	
+			valid = false;
+			while(!valid)
+			{
+				System.out.print("Enter School Year (to skip enter none): ");
+				year = console.nextLine();
+				if(year.equals("2002") || year.equals("2003"))
+					valid = true;
+				else
+				{
+					year = year.toUpperCase();
+					if(year.equals("NONE"))
+						valid = true;
+					else
+						System.out.println("School year was not found within repository. Please try again.");
+				}
+			}
+			
+			if(year.equals("NONE") && semester.equals("NONE") && course.equals("NONE"))
+				printMenu();
+			else
+			{
+				String searchCriteria = course +"," +semester +"," +year;
+				int[] grades = new int[5]; 
+				grades = fileIn.gradeSearch(searchCriteria);
+				
+				System.out.println("A  B  C  D  F");
+				for (int i = 0; i < grades.length; i++)
+				{
+					System.out.print(grades[i] +"  ");
+				}
+				System.out.println("\n\n");
+				printMenu();
+			}
 		}
 
 	}//end gradeSearch()

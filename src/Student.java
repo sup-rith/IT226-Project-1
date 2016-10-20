@@ -175,7 +175,7 @@ public class Student {
 		
 		body += finalExam +"," +total +","+ lGrade[0] +"\n";
 		
-		String out = header + body;
+		String out = header + body +"\n";
 		
 		return out;
 	}
