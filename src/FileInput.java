@@ -202,7 +202,7 @@ public class FileInput {
 			
 			String[] fileGradeCameFrom = gradeWithFile[1].split("-");
 			
-			if (userParam[0].equals("NONE") && userParam[2].equals("NONE") && userParam[1].equals("FALL")){
+			if (userParam[0].equals("NONE") && userParam[2].equals("NONE") && userParam[1].equals("FALL")){ //user only enters fall
 				if (gradeWithFile[0].equals("A")){
 					numOfAs++;
 				}
@@ -220,7 +220,27 @@ public class FileInput {
 				}
 			}
 			
-			if(userParam[0] != "NONE")
+			if (!userParam[0].equals("NONE") && !userParam[2].equals("NONE")){ // search by course and year
+				if (userParam[0].equals(fileGradeCameFrom[0]) && userParam[2].equals(fileGradeCameFrom[2])){
+					if (gradeWithFile[0].equals("A")){
+						numOfAs++;
+					}
+					if (gradeWithFile[0].equals("B")){
+						numOfBs++;
+					}
+					if (gradeWithFile[0].equals("C")){
+						numOfCs++;
+					}
+					if (gradeWithFile[0].equals("D")){
+						numOfDs++;
+					}
+					if (gradeWithFile[0].equals("F")){
+						numOfFs++;
+					}
+				}
+			}
+			
+			if(!userParam[0].equals("NONE")) //search by course 
 			{
 				if(userParam[0].equals(fileGradeCameFrom[0])){
 					if (gradeWithFile[0].equals("A")){
@@ -240,7 +260,7 @@ public class FileInput {
 					}	
 				}
 			}	
-			if(userParam[2] != "NONE"){
+			if(!userParam[2].equals("NONE")){ //search by year
 				if(userParam[2].equals(fileGradeCameFrom[2])){
 					if (gradeWithFile[0].equals("A")){
 						numOfAs++;
