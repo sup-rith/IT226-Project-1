@@ -186,12 +186,43 @@ public class FileInput {
 		//write to file outFile
 	}
 	
-	public String[] gradeSearch(String criteria)
+	public int[] gradeSearch(String criteria)
 	{
+		
+		int numOfAs = 0;
+		int numOfBs = 0;
+		int numOfCs = 0;
+		int numOfDs = 0;
+		int numOfFs = 0;
+		
 		String[] searchParam = criteria.split(",");
-		String[] gradeResults = new String[4];
+		int[] gradeResults = new int[4];
+
+		for (int i = 0; i < students.size(); i++){
+			if (students.get(i).getLetterGrade().equals("A")){
+				numOfAs++;
+			}
+			if (students.get(i).getLetterGrade().equals("B")){
+				numOfBs++;
+			}
+			if (students.get(i).getLetterGrade().equals("C")){
+				numOfCs++;
+			}
+			if (students.get(i).getLetterGrade().equals("D")){
+				numOfDs++;
+			}
+			if (students.get(i).getLetterGrade().equals("F")){
+				numOfFs++;
+			}
+		}
 		
+		gradeResults[0] = numOfAs;
+		gradeResults[1] = numOfBs;
+		gradeResults[2] = numOfCs;
+		gradeResults[3] = numOfDs;
+		gradeResults[4] = numOfFs;
 		
+
 		
 		return gradeResults;
 	}

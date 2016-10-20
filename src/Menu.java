@@ -5,7 +5,7 @@ public class Menu
 	public Scanner console = new Scanner(System.in);
 	FileInput fileIn = new FileInput();
 	int numOfFiles = 0;
-	String[] nameOfFiles = new String[2];
+	String[] nameOfFiles = new String[3];
 	
 	public void printMenu()
 	{//start printMenu()
@@ -174,7 +174,7 @@ public class Menu
 		else
 		{
 			String searchCriteria = course +"," +semester +"," +year;
-			String[] grades = new String[4]; 
+			int[] grades = new int[5]; 
 			grades = fileIn.gradeSearch(searchCriteria);
 			//Tell Driver to create an array of each grade letter for the parameters sent.
 			//The string sent to FileInput's gradeSearch method is split by commas. 
