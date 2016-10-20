@@ -47,6 +47,27 @@ public class Menu
 		boolean isTrue = true;
 		
 		while(isTrue){
+			
+			
+//			System.out.println("Do you want to search by file name(enter \"file\" or by course number, semester and year(enter \"course\")?: ");
+//			String search = console.nextLine();
+//			
+//			search.toUpperCase();
+//			
+//			if (search.contains("COURSE")){
+//				System.out.println("Enter course number: ");
+//				String courseNum = console.next();
+//				System.out.println("Enter semester: ");
+//				String sem = console.next();
+//				System.out.println("Enter year");
+//				String yearOfClass = console.next();
+//				
+//				String name = courseNum + "-" + sem + "-" + yearOfClass + ".csv";
+//			}
+//			
+//			if (search.contains("FILE")){
+			
+			
 			System.out.print("Enter file name: ");
 			filename = console.next();
 			console.nextLine();

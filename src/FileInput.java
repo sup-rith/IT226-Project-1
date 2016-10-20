@@ -150,12 +150,12 @@ public class FileInput {
         }
 	}
 	
-	public void addStudent(String id, String outFile)
+	public void addStudent(String id, String outFile) 
 	{
 		
 		int studentNumber = 0;
 		
-		for (int i = 0; i < students.size(); i++){
+		for (int i = 0; i < students.size(); i++){ //TODO: FML is not looping
 			if (id == students.get(i).getId()){
 				studentNumber = i;
 				i = students.size() + 1;
