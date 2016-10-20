@@ -128,7 +128,7 @@ public class Student {
 	
 	public String toString()
 	{
-		String header = new String("Student Id,Full Name,");
+		String header = new String("Student Id,First Name,Last Name");
 		
 		for(int i = 0; i < assignments.size(); i++)
 		{
@@ -152,21 +152,21 @@ public class Student {
 		
 		//------------------
 		
-		String body = new String(getId() +"," +getFullName() +",");
+		String body = new String(getId() +"," +getFirstName() +"," +getLastName());
 		
 		for(int i = 0; i < assignments.size(); i++)
 		{
 			body += assignments.get(i).getScore() +"," +assignments.get(i).getComment() +",";
 		}
 		
-		for(int i = 0; i < projects.size(); i++)
+		for(int j = 0; j < projects.size(); j++)
 		{
-			header += projects.get(i).getScore() +"," +projects.get(i).getComment() +",";
+			body += projects.get(j).getScore() +"," +projects.get(j).getComment() +",";
 		}
 		
-		for(int i = 0; i < exams.size(); i++)
+		for(int l = 0; l < exams.size(); l++)
 		{
-			body += exams.get(i) +",";
+			body += exams.get(l) +",";
 		}
 		
 		body += finalExam +"," +total +"," +letterGrade +"\n";
