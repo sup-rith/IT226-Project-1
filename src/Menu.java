@@ -45,7 +45,6 @@ public class Menu
 		String courseNumber = "";
 		String semester = "";
 		String year = "";
-		String name = "";
 		int cutOff = 0;
 		boolean isTrue = true;
 		
@@ -58,36 +57,46 @@ public class Menu
 			
 			if (search.contains("COURSE")){
 				System.out.print("Enter course number: ");
-				String courseNum = console.next();
+				String courseNum = console.nextLine();
 				System.out.print("Enter semester: ");
-				String sem = console.next();
+				String sem = console.nextLine();
 				System.out.print("Enter year:");
-				String yearOfClass = console.next();
+				String yearOfClass = console.nextLine();
 				
-				name = courseNum + "-" + sem + "-" + yearOfClass + ".csv";
-				
+				filename = courseNum + "-" + sem + "-" + yearOfClass + ".csv";
+				if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv")){
+					System.out.println("\tFile Found");
+					isTrue = false;
+				}
+				else{
+					System.out.println("You entered an invalid file name. Please try again.");
+				}
 			}
 			
-			if (search.contains("FILE")){
+			else if (search.contains("FILE")){
 				System.out.print("Enter file name: ");
-				filename = console.next();
-				console.nextLine();
+				filename = console.nextLine();
 				
 				if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv")){
-						
+						System.out.println("\tFile Found");
 					for(int i =0; i < filename.length(); i++){
 							cutOff = filename.indexOf('.');
 						}
 					
 					file = filename.substring(0, cutOff);
-					System.out.println(file);
+					
 					String[] fileNameString = filename.split("-");
 					courseNumber = fileNameString[0];
 					semester = fileNameString[1];
 					year = fileNameString[2];
 					isTrue = false;
 				}
-			}		
+				else{
+					System.out.println("You entered an invalid file name. Please try again.");
+				}
+				
+			}
+			
 			else{
 				System.out.println("You entered an invalid file name. Please try again.");
 			}

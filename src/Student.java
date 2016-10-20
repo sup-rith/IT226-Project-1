@@ -152,8 +152,7 @@ public class Student {
 		
 		//------------------
 		
-		String body = getId();
-		body += "," +fullName +",";
+		String body = new String(getId() +"," +getFullName() +",");
 		
 		for(int i = 0; i < assignments.size(); i++)
 		{

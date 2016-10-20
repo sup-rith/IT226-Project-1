@@ -7,9 +7,9 @@ public class FileInput {
 	String firstName;
 	String lastName;
 	String id;
-	/*ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+	ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 	ArrayList<Project> projects = new ArrayList<Project>();
-	ArrayList<String> exams = new ArrayList<String>(); */
+	ArrayList<String> exams = new ArrayList<String>(); 
 	ArrayList<Student> students = new ArrayList<Student>();
 	String total;
 	String finalExam;
@@ -51,11 +51,8 @@ public class FileInput {
 			String studentLine = reader.nextLine();
 			String[] data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			
+			
 			while (true){
-
-				ArrayList<Assignment> assignments = new ArrayList<Assignment>();
-				ArrayList<Project> projects = new ArrayList<Project>();
-				ArrayList<String> exams = new ArrayList<String>();	
 				
 				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
@@ -108,6 +105,10 @@ public class FileInput {
 					students.add(student);
 					count = -1;
 					
+					assignments = new ArrayList<Assignment>();
+					projects = new ArrayList<Project>();
+					exams = new ArrayList<String>(); 
+					
 					studentNum++;
 					
 					if (numOfStudents == studentNum){
@@ -117,15 +118,9 @@ public class FileInput {
 
 					studentLine = reader.nextLine();
 					data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
-					
-					
-
 				}
-			
 				
 				count++;
-				
-				//System.out.println(students.size());
 					
 			}
 			System.out.println("Successfully added file to repository");
