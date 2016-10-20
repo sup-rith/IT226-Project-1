@@ -45,49 +45,49 @@ public class Menu
 		String courseNumber = "";
 		String semester = "";
 		String year = "";
+		String name = "";
 		int cutOff = 0;
 		boolean isTrue = true;
 		
 		while(isTrue){
 			
+			System.out.println("Do you want to search by file name? (enter \"file\") or by course number, semester and year? (enter \"course\")?: ");
+			String search = console.nextLine();
 			
-//			System.out.println("Do you want to search by file name(enter \"file\" or by course number, semester and year(enter \"course\")?: ");
-//			String search = console.nextLine();
-//			
-//			search.toUpperCase();
-//			
-//			if (search.contains("COURSE")){
-//				System.out.println("Enter course number: ");
-//				String courseNum = console.next();
-//				System.out.println("Enter semester: ");
-//				String sem = console.next();
-//				System.out.println("Enter year");
-//				String yearOfClass = console.next();
-//				
-//				String name = courseNum + "-" + sem + "-" + yearOfClass + ".csv";
-//			}
-//			
-//			if (search.contains("FILE")){
+			search = search.toUpperCase();
 			
-			
-			System.out.print("Enter file name: ");
-			filename = console.next();
-			console.nextLine();
-			
-			if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv")){
-					
-				for(int i =0; i < filename.length(); i++){
-						cutOff = filename.indexOf('.');
-					}
+			if (search.contains("COURSE")){
+				System.out.print("Enter course number: ");
+				String courseNum = console.next();
+				System.out.print("Enter semester: ");
+				String sem = console.next();
+				System.out.print("Enter year:");
+				String yearOfClass = console.next();
 				
-				file = filename.substring(0, cutOff);
-				System.out.println(file);
-				String[] fileNameString = filename.split("-");
-				courseNumber = fileNameString[0];
-				semester = fileNameString[1];
-				year = fileNameString[2];
-				isTrue = false;
+				name = courseNum + "-" + sem + "-" + yearOfClass + ".csv";
+				
 			}
+			
+			if (search.contains("FILE")){
+				System.out.print("Enter file name: ");
+				filename = console.next();
+				console.nextLine();
+				
+				if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv")){
+						
+					for(int i =0; i < filename.length(); i++){
+							cutOff = filename.indexOf('.');
+						}
+					
+					file = filename.substring(0, cutOff);
+					System.out.println(file);
+					String[] fileNameString = filename.split("-");
+					courseNumber = fileNameString[0];
+					semester = fileNameString[1];
+					year = fileNameString[2];
+					isTrue = false;
+				}
+			}		
 			else{
 				System.out.println("You entered an invalid file name. Please try again.");
 			}
