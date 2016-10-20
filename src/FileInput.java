@@ -210,24 +210,44 @@ public class FileInput {
 			
 			if(userParam[0] != "NONE")
 			{
-				if(userParam[0].equals(fileGradeCameFrom[0]))
+				if(userParam[0].equals(fileGradeCameFrom[0])){
+					if (students.get(i).getLetterGrade().equals("A")){
+						numOfAs++;
+					}
+					if (students.get(i).getLetterGrade().equals("B")){
+						numOfBs++;
+					}
+					if (students.get(i).getLetterGrade().equals("C")){
+						numOfCs++;
+					}
+					if (students.get(i).getLetterGrade().equals("D")){
+						numOfDs++;
+					}
+					if (students.get(i).getLetterGrade().equals("F")){
+						numOfFs++;
+					}	
+				}
+				if(userParam[2] != "NONE")
+				{
+					if(userParam[2].equals(fileGradeCameFrom[2])){
+						if (students.get(i).getLetterGrade().equals("A")){
+							numOfAs++;
+						}
+						if (students.get(i).getLetterGrade().equals("B")){
+							numOfBs++;
+						}
+						if (students.get(i).getLetterGrade().equals("C")){
+							numOfCs++;
+						}
+						if (students.get(i).getLetterGrade().equals("D")){
+							numOfDs++;
+						}
+						if (students.get(i).getLetterGrade().equals("F")){
+							numOfFs++;
+						}	
+					}
 			}
 			
-			if (students.get(i).getLetterGrade().equals("A")){
-				numOfAs++;
-			}
-			if (students.get(i).getLetterGrade().equals("B")){
-				numOfBs++;
-			}
-			if (students.get(i).getLetterGrade().equals("C")){
-				numOfCs++;
-			}
-			if (students.get(i).getLetterGrade().equals("D")){
-				numOfDs++;
-			}
-			if (students.get(i).getLetterGrade().equals("F")){
-				numOfFs++;
-			}
 		}
 		
 		gradeResults[0] = numOfAs;
