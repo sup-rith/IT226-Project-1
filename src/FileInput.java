@@ -103,7 +103,7 @@ public class FileInput {
 					total = (data[count]);
 				}
 				if (headerToken[count].contains("grade") || headerToken[count].contains("Grade")){
-					letterGrade = (data[count] +"," cutOff);
+					letterGrade = (data[count] +"," +cutOff);
 					
 					Student student = new Student(firstName, lastName, id, assignments, projects, exams,
 							total, finalExam, letterGrade);
@@ -196,7 +196,7 @@ public class FileInput {
 		int numOfFs = 0;
 		
 		criteria = criteria.toUpperCase();
-		String[] searchParam = criteria.split(",");
+		String[] userParam = criteria.split(",");
 		int[] gradeResults = new int[4];
 
 		for (int i = 0; i < students.size(); i++){
@@ -206,11 +206,11 @@ public class FileInput {
 			
 			String[] params = studentGrade.split(",");
 			
-			String paramsCut = params[1].split("-");
+			String[] fileGradeCameFrom = params[1].split("-");
 			
-			if(searchParam[0] != "NONE")
+			if(userParam[0] != "NONE")
 			{
-				if(searchParam[0].equals(paramsCut[0]))
+				if(userParam[0].equals(fileGradeCameFrom[0]))
 			}
 			
 			if (students.get(i).getLetterGrade().equals("A")){
