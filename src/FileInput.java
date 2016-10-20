@@ -7,9 +7,9 @@ public class FileInput {
 	String firstName;
 	String lastName;
 	String id;
-	ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+	/*ArrayList<Assignment> assignments = new ArrayList<Assignment>();
 	ArrayList<Project> projects = new ArrayList<Project>();
-	ArrayList<String> exams = new ArrayList<String>();
+	ArrayList<String> exams = new ArrayList<String>(); */
 	ArrayList<Student> students = new ArrayList<Student>();
 	String total;
 	String finalExam;
@@ -32,8 +32,7 @@ public class FileInput {
 			reader = new Scanner(new File(fileName));
 			
 			int count = 0;
-			int numOfStudents = 0;
-			
+						
 			while (reader.hasNextLine()){
 				reader.nextLine();
 				numOfStudents++;
@@ -54,7 +53,9 @@ public class FileInput {
 			
 			while (true){
 
-				
+				ArrayList<Assignment> assignments = new ArrayList<Assignment>();
+				ArrayList<Project> projects = new ArrayList<Project>();
+				ArrayList<String> exams = new ArrayList<String>();	
 				
 				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
@@ -76,7 +77,7 @@ public class FileInput {
 					Assignment assignment = new Assignment(cutOff +"-" +headerToken[count], data[count], data[count +1]);
 					
 					assignments.add(assignment);
-					count ++;
+					count++;
 					
 				}
 				else if (headerToken[count].contains("project") || headerToken[count].contains("Project") ||headerToken[count].contains("ray")
@@ -85,7 +86,7 @@ public class FileInput {
 					Project project = new Project(headerToken[count], data[count], data[count +1]);
 					
 					projects.add(project);
-					count ++;
+					count++;
 				}
 				else if (headerToken[count].contains("Exam")){
 					

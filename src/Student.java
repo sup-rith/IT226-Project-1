@@ -135,24 +135,25 @@ public class Student {
 			header += assignments.get(i).getName() + "," + assignments.get(i).getName() +" Comment,";
 		}
 		
-		for(int i = 0; i < projects.size(); i++)
+		for(int j = 0; j < projects.size(); j++)
 		{
-			header += projects.get(i).getName() +"," +projects.get(i).getName() +" Comment,";
+			header += projects.get(j).getName() +"," +projects.get(j).getName() +" Comment,";
 		}
 		
-		for(int i = 0; i < exams.size(); i++)
+		for(int l = 0; l < exams.size(); l++)
 		{
-			if(i+1 >= exams.size())
+			if(l+1 >= exams.size())
 				header += "Exam " +exams.size();
 			else
-				header += "Exam " +i+1 +",";
+				header += "Exam " +l+1 +",";
 		}
 		
 		header += "Final Exam, Total, Letter Grade\n";
 		
 		//------------------
 		
-		String body = id +"," +fullName +",";
+		String body = getId();
+		body += "," +fullName +",";
 		
 		for(int i = 0; i < assignments.size(); i++)
 		{
