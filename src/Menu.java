@@ -176,6 +176,10 @@ public class Menu
 			String searchCriteria = course +"," +semester +"," +year;
 			int[] grades = new int[5]; 
 			grades = fileIn.gradeSearch(searchCriteria);
+			
+			for (int i = 0; i < grades.length; i++){
+				System.out.println(grades[i]);
+			}
 			//Tell Driver to create an array of each grade letter for the parameters sent.
 			//The string sent to FileInput's gradeSearch method is split by commas. 
 			//Three fields: course# then semester then school year
