@@ -79,7 +79,7 @@ public class FileInput {
 				else if (headerToken[count].contains("project") || headerToken[count].contains("Project") ||headerToken[count].contains("ray")
 						|| headerToken[count].contains("Sprint") || headerToken[count].contains("Paper")){
 					
-					Project project = new Project(headerToken[count], data[count], data[count +1]);
+					Project project = new Project(cutOff +"-" +headerToken[count], data[count], data[count +1]);
 					
 					projects.add(project);
 					count++;
@@ -143,39 +143,39 @@ public class FileInput {
 	public void addStudent(String id, String outFile) 
 	{
 		
-		int studentNumber = 0;
+		//int studentNumber = 0;
+		
+		int[] studentsFound = {-1,-1,-1};
 		
 		for (int i = 0; i < students.size(); i++){ 
 			if (id.equals(students.get(i).getId())){
-				studentNumber = i;
-				i = students.size() + 1;
+				if(studentsFound[0] == -1)
+					studentsFound[0] = i;
+				else if(studentsFound[1] == -1)
+					studentsFound[1] = i;
+				else
+					studentsFound[2] = i;
 			}
 		}
 		
 		
 		FileWriter writer = null;
-		String studentInfo = students.get(studentNumber).toString();
 		
+		String studentInfo0 = students.get(studentsFound[0]).toString();
+		String studentInfo1 = "";
+		String studentInfo2 = "";
 		
-		
-		try{
-			writer = new FileWriter(outFile);
-			writer.write(studentInfo);
-			writer.close();
-			
+		if((studentsFound[1] != -1))
+		{
+			studentInfo1 = students.get(studentsFound[1]).toString();
+			studentInfo0 += studentInfo1;
 		}
-		catch(IOException ex) {
-                System.out.println(
-                    "Error writing to file: " 
-                    + outFile);                  
-                System.exit(1);
-            }
-		
-		
-		
-		//write to file outFile
+		if((studentsFound[2] != -1))
+		{
+			studentInfo1 = students.get(studentsFound[2]).toString();
+			studentInfo0 += studentInfo2;
+		}
 	}
-	
 	public int[] gradeSearch(String criteria)
 	{
 		int numOfAs = 0;

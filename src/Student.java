@@ -130,6 +130,8 @@ public class Student {
 	{
 		String header = new String("Student Id,First Name,Last Name,");
 		
+		String[] lGrade = letterGrade.split(",");
+		
 		for(int i = 0; i < assignments.size(); i++)
 		{
 			header += assignments.get(i).getName() + "," + assignments.get(i).getName() +" Comment,";
@@ -143,12 +145,12 @@ public class Student {
 		for(int l = 0; l < exams.size(); l++)
 		{
 			if(l+1 >= exams.size())
-				header += "Exam " +exams.size() +",";
+				header += lGrade[1]+ "-Exam " +exams.size() +",";
 			else
-				header += "Exam " +l+1 +",";
+				header += lGrade[1]+ "-Exam " +l+1 +",";
 		}
 		
-		header += "Final Exam, Total, Letter Grade\n";
+		header += lGrade[1]+ "-Final Exam," + lGrade[1]+ "-Total," + lGrade[1]+ "- Letter Grade\n";
 		
 		//------------------
 		
@@ -169,9 +171,9 @@ public class Student {
 			body += exams.get(l) +",";
 		}
 		
-		String[] lGrade = letterGrade.split(",");
 		
-		body += finalExam +"," +total +"," +lGrade[0] +"\n";
+		
+		body += finalExam +"," +total +","+ lGrade[0] +"\n";
 		
 		String out = header + body;
 		
