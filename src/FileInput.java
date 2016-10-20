@@ -150,8 +150,8 @@ public class FileInput {
 		
 		int studentNumber = 0;
 		
-		for (int i = 0; i < students.size(); i++){ //TODO: FML is not looping
-			if (id == students.get(i).getId()){
+		for (int i = 0; i < students.size(); i++){ 
+			if (id.equals(students.get(i).getId())){
 				studentNumber = i;
 				i = students.size() + 1;
 			}
@@ -220,7 +220,7 @@ public class FileInput {
 				}
 			}
 			
-			if (!userParam[0].equals("NONE") && !userParam[2].equals("NONE")){ // search by course and year
+			else if (!userParam[0].equals("NONE") && !userParam[2].equals("NONE")){ // search by course and year
 				if (userParam[0].equals(fileGradeCameFrom[0]) && userParam[2].equals(fileGradeCameFrom[2])){
 					if (gradeWithFile[0].equals("A")){
 						numOfAs++;
@@ -240,7 +240,7 @@ public class FileInput {
 				}
 			}
 			
-			if(!userParam[0].equals("NONE")) //search by course 
+			else if(!userParam[0].equals("NONE")) //search by course 
 			{
 				if(userParam[0].equals(fileGradeCameFrom[0])){
 					if (gradeWithFile[0].equals("A")){
@@ -260,7 +260,7 @@ public class FileInput {
 					}	
 				}
 			}	
-			if(!userParam[2].equals("NONE")){ //search by year
+			else if(!userParam[2].equals("NONE")){ //search by year
 				if(userParam[2].equals(fileGradeCameFrom[2])){
 					if (gradeWithFile[0].equals("A")){
 						numOfAs++;
