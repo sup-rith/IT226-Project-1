@@ -153,18 +153,18 @@ public class FileInput {
 	public void addStudent(String id, String outFile)
 	{
 		
-		Student student = new Student();
+		int studentNumber = 0;
 		
 		for (int i = 0; i < students.size(); i++){
 			if (id == students.get(i).getId()){
-				student = students.get(i);
-				break;
+				studentNumber = i;
+				i = students.size() + 1;
 			}
 		}
 		
 		
 		FileWriter writer = null;
-		String studentInfo = student.toString();
+		String studentInfo = students.get(studentNumber).toString();
 		
 		
 		
