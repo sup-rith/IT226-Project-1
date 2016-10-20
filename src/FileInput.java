@@ -49,11 +49,6 @@ public class FileInput {
 			String headerLine = reader.nextLine();
 			String[] headerToken = headerLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			
-			ArrayList<Assignment> assignments = new ArrayList<Assignment>();
-			ArrayList<Project> projects = new ArrayList<Project>();
-			ArrayList<String> exams = new ArrayList<String>();
-			ArrayList<Student> students = new ArrayList<Student>();
-			
 			String studentLine = reader.nextLine();
 			String[] data = studentLine.split(",(?=([^\"]*\"[^\"]*\")*[^\"]*$)", -1);
 			
@@ -188,7 +183,6 @@ public class FileInput {
 	
 	public int[] gradeSearch(String criteria)
 	{
-		
 		int numOfAs = 0;
 		int numOfBs = 0;
 		int numOfCs = 0;
@@ -197,7 +191,7 @@ public class FileInput {
 		
 		criteria = criteria.toUpperCase();
 		String[] userParam = criteria.split(",");
-		int[] gradeResults = new int[4];
+		int[] gradeResults = new int[5];
 
 		for (int i = 0; i < students.size(); i++){
 			String studentGrade = students.get(i).getLetterGrade();
