@@ -180,6 +180,7 @@ public class FileInput {
 			try{
 				writer = new FileWriter(outFile);
 				writer.write(studentInfo0);
+				System.out.println("\t File Written  \n\n");
 				writer.close();
 				
 			}
