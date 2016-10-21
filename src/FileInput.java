@@ -80,7 +80,7 @@ public class FileInput {
 					projects.add(project);
 					count++;
 				}
-				else if (headerToken[count].contains("Exam")){
+				else if (headerToken[count].contains("Exam") && !headerToken[count].contains("Final")){
 					
 					exams.add(data[count]);
 				}
