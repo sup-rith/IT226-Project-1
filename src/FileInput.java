@@ -91,7 +91,15 @@ public class FileInput {
 					letterGrade = (data[count] +"," +cutOff);
 					
 					if(firstName != null && lastName != null)
-						fullName = lastName +", " +firstName;
+						fullName = firstName + " " + lastName;
+
+					if (fullName.contains(",")){
+						String[] fullNameArr = fullName.split(",");
+											
+						fullName = fullNameArr[1] + " " + fullNameArr[0];
+						
+					}
+					
 					Student student = new Student(fullName, id, assignments, projects, exams,
 							total, finalExam, letterGrade);
 					
