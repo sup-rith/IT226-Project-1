@@ -38,8 +38,6 @@ public class FileInput {
 			reader.close();
 			reader = new Scanner(new File(fileName));
 
-			
-			
 			int studentNum = 0;
 			
 			String headerLine = reader.nextLine();
