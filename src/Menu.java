@@ -64,7 +64,7 @@ public class Menu
 				String courseNum = console.nextLine();
 				System.out.print("Enter semester: ");
 				String sem = console.nextLine();
-				System.out.print("Enter year:");
+				System.out.print("Enter year: ");
 				String yearOfClass = console.nextLine();
 				
 				file = courseNum + "-" + sem + "-" + yearOfClass;

@@ -171,7 +171,7 @@ public class FileInput {
 			}
 			if((studentsFound[2] != -1))
 			{
-				studentInfo1 = students.get(studentsFound[2]).toString();
+				studentInfo2 = students.get(studentsFound[2]).toString();
 				studentInfo0 += studentInfo2;
 			}
 				
