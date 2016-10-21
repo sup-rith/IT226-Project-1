@@ -14,13 +14,11 @@ public class FileInput {
 	String total;
 	String finalExam;
 	String letterGrade;
-
 	
 	FileReader fileReader = null;
 	String line = null;
 	Scanner reader = null;
 	int count = 0;
-	
 	
 	public boolean readFile(String fileName, String cutOff){
 			

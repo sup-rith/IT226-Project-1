@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menu 
@@ -6,7 +7,9 @@ public class Menu
 	FileInput fileIn = new FileInput();
 	int numOfFiles = 0;
 	String[] nameOfFiles = new String[3];
+	ArrayList<String> filesAdded = new ArrayList<String>();
 	boolean added = false;
+	boolean repeatedFile = false;
 	
 	public void printMenu()
 	{//start printMenu()
@@ -64,7 +67,8 @@ public class Menu
 				System.out.print("Enter year:");
 				String yearOfClass = console.nextLine();
 				
-				filename = courseNum + "-" + sem + "-" + yearOfClass + ".csv";
+				file = courseNum + "-" + sem + "-" + yearOfClass;
+				filename = file + ".csv";
 				if(filename.equals("437-fall-2002.csv")|| filename.equals("437-fall-2003.csv")|| filename.equals("380-fall-2002.csv")){
 					System.out.println("\tFile Found");
 					isTrue = false;
@@ -103,13 +107,29 @@ public class Menu
 			}
 		}
 		
-		boolean result = fileIn.readFile(filename,file);
-		if(result)
-			added = true;
-		nameOfFiles[numOfFiles] = filename;
-		numOfFiles++;
-		System.out.println("\n\n\n__________\n\n");
-		printMenu();
+		for(int i = 0; i < filesAdded.size(); i++)
+		{
+			if(filesAdded.equals(filename))
+				repeatedFile = true;
+		}
+		if(repeatedFile)
+		{
+			System.out.println("That file has already been added to the repository");
+			printMenu();
+		}
+		else
+		{
+			boolean result = fileIn.readFile(filename,file);
+			if(result)
+			{
+				added = true;
+				filesAdded.add(filename);
+			}
+			nameOfFiles[numOfFiles] = filename;
+			numOfFiles++;
+			System.out.println("\n\n\n__________\n\n");
+			printMenu();
+		}
 		
 	}//end addData()
 	
