@@ -90,6 +90,7 @@ public class Menu
 					
 					file = filename.substring(0, cutOff);
 					
+					
 					String[] fileNameString = filename.split("-");
 					courseNumber = fileNameString[0];
 					semester = fileNameString[1];
