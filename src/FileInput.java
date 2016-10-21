@@ -51,9 +51,6 @@ public class FileInput {
 				
 				if (headerToken[count].contains("Student Name")){
 					fullName = (data[count]);
-					String[] name = fullName.split(","); //Last minute add
-					firstName = name[1];
-					lastName = name[0];
 				}
 				else if (headerToken[count].contains("FIRST NAME")){
 					firstName = (data[count]);
@@ -93,7 +90,9 @@ public class FileInput {
 				if (headerToken[count].contains("grade") || headerToken[count].contains("Grade")){
 					letterGrade = (data[count] +"," +cutOff);
 					
-					Student student = new Student(firstName, lastName, id, assignments, projects, exams,
+					if(firstName != null && lastName != null)
+						fullName = lastName +", " +firstName;
+					Student student = new Student(fullName, id, assignments, projects, exams,
 							total, finalExam, letterGrade);
 					
 					

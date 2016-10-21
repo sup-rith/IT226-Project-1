@@ -21,11 +21,10 @@ public class Student {
 	public Student(){
 	}
 	
-	public Student(String firstName, String lastName, String id, ArrayList<Assignment> assignments,
+	public Student(String fullName, String id, ArrayList<Assignment> assignments,
 			ArrayList<Project> projects, ArrayList<String> exams, String total, String finalExam, String letterGrade){
 		
-		this.firstName = firstName;
-		this.lastName = lastName;
+		this.fullName = fullName;
 		this.id = id;
 		this.assignments = assignments;
 		this.projects = projects;
@@ -128,7 +127,7 @@ public class Student {
 	
 	public String toString()
 	{
-		String header = new String("Student Id,First Name,Last Name,");
+		String header = new String("Student Id,Full Name,");
 		
 		String[] lGrade = letterGrade.split(",");
 		
@@ -154,7 +153,7 @@ public class Student {
 		
 		//------------------
 		
-		String body = new String(getId() +"," +getFirstName() +"," +getLastName() +",");
+		String body = new String(getId() +"," +fullName +",");
 		
 		for(int i = 0; i < assignments.size(); i++)
 		{
